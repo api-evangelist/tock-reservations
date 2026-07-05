@@ -1,0 +1,84 @@
+aid: tock-reservations
+name: Tock
+review:
+  question: Does Tock expose a documented public WebSocket API?
+  answer: false
+  date: '2026-07-05'
+  reviewer: API Evangelist
+  asyncapiSpecCreated: false
+  asyncapiScopeNote: >
+    No AsyncAPI document was authored. Tock's real-time delivery is provided by
+    server-to-endpoint HTTP webhooks (the Real-time Reservation Webhook and
+    Real-time Guest Profile Webhook), not by a bidirectional or server-push
+    WebSocket that a consumer connects to. The webhooks POST events to a
+    partner-supplied endpoint URL. Because Tock does not publish concrete
+    webhook payload schemas, headers, or endpoint contracts outside its
+    partner program, there is no documented public server-push transport on
+    Tock's own API to model as AsyncAPI.
+findings:
+  summary: >
+    Tock does not publish a documented public WebSocket API. Tock is a
+    restaurant and hospitality reservations, events, and ordering platform,
+    owned by American Express (acquired from Squarespace in 2024). Tock's
+    developer surface is partner and enterprise-gated: API and webhook access
+    is limited to Premium and Premium Unlimited plans and is provisioned by
+    emailing integrate@tockhq.com from an Account Owner address. The documented
+    surface is a twice-daily Data Exports API for historical reservation and
+    guest data, a Guest Profile Ingest API for basic guest info and tags, and
+    two real-time HTTP webhooks (reservation updates and guest-profile
+    updates). Reservation records cannot be created or manipulated via the API.
+    Tock publishes public data-model reference pages at api.exploretock.com but
+    does not expose concrete endpoint paths, methods, OpenAPI, or any WebSocket
+    (ws:// or wss://) endpoint.
+  accessModel: >
+    Partner and enterprise-gated. Not self-serve. Requires a higher-tier
+    Premium or Premium Unlimited plan plus a manual API-key request. Public
+    documentation is limited to data-model reference pages and an API FAQ; full
+    endpoint contracts are shared only with approved partners. All API entries
+    in the catalog are modeled (endpointsModeled: true) and no endpoints were
+    fabricated.
+  transports:
+    - protocol: REST / Data Export
+      scheme: https
+      baseURL: https://api.exploretock.com
+      documented: partial
+      note: Twice-daily Data Exports and Guest Profile Ingest. Data models are public; concrete endpoint paths and methods are partner-only, so modeled.
+    - protocol: Webhook
+      scheme: https
+      documented: partial
+      note: Real-time reservation and guest-profile webhooks POST to a partner-supplied endpoint URL with partner-supplied auth headers. Server-to-endpoint HTTP, not WebSocket.
+    - protocol: WebSocket
+      scheme: wss
+      documented: false
+      note: No WebSocket endpoint is documented anywhere in Tock's public developer materials as of the review date.
+  endpointsModeled: true
+  endpointsConfirmedRest: []
+sources:
+  - url: https://api.exploretock.com/docs/latest/reservation.html
+    type: Documentation
+    note: Public Reservation data model reference. Defines reservation payload shape; no endpoints, methods, or auth.
+  - url: https://api.exploretock.com/docs/latest/guest_profile.html
+    type: Documentation
+    note: Public Guest data model reference. Defines guest-profile payload shape; no endpoints, methods, or auth.
+  - url: https://tock.zendesk.com/hc/en-us/articles/25447494175508-API-FAQ
+    type: Documentation
+    note: API FAQ. Access gated to Premium / Premium Unlimited plans; request key via integrate@tockhq.com. Lists Data Exports API, Guest Profile Ingest API, and two real-time webhooks. Reservation data cannot be manipulated via API.
+  - url: https://www.exploretock.com/join/integrations/
+    type: Documentation
+    note: Integration partners (Toast, WineDirect, Commerce7, Tripleseat, Upserve, and more).
+  - url: https://www.exploretock.com/join/partnerships/
+    type: Documentation
+    note: Partnership program - the channel through which API and integration access is granted.
+  - url: https://www.exploretock.com/join/pricing/
+    type: Documentation
+    note: Public pricing page. Tiered per-venue SaaS; no per-cover fee; prepaid transaction fee on lower tiers.
+actions:
+  asyncapiPath: null
+  apisYmlUpdated: true
+  reason: >
+    No WebSocket protocol surface exists. Tock's real-time delivery is HTTP
+    webhooks to partner endpoints, and its data surface is a gated export /
+    ingest program without published endpoint contracts. No AsyncAPI document
+    was created because there is no documented public server-push transport on
+    Tock's own API to model. All API entries are modeled from public data-model
+    references and the API FAQ; no endpoints were fabricated.

@@ -1,0 +1,48 @@
+aid: tock-reservations-plans-pricing
+name: Tock Plans and Pricing
+description: >-
+  Tock sells its reservations, events, and ordering platform as tiered per-venue
+  SaaS. API and webhook access is not a self-serve add-on - it is gated to the
+  higher Premium and Premium Unlimited plans and provisioned by request. The
+  figures below are approximate, drawn from Tock's public pricing page and
+  third-party comparisons as of mid-2026, and are subject to change; confirm
+  current pricing and API eligibility directly with Tock.
+sourceURL: https://www.exploretock.com/join/pricing/
+apiAccessNote: >-
+  Per Tock's API FAQ, only Premium and Premium Unlimited (higher-tier) plans are
+  eligible to receive API and webhook access. To request an API key, an Account
+  Owner emails integrate@tockhq.com from an email address listed on the
+  business Dashboard Team page. Reservation data cannot be created or modified
+  via the API; only basic guest information and tags can be ingested.
+currency: USD
+plans:
+- name: Entry / Reservations
+  price: from 79 to 199 per month
+  unit: per venue per month
+  note: >-
+    Lower reservation tiers start around 79 USD per month, with reservation
+    plans commonly quoted from 199 USD per month. A 2 to 3 percent transaction
+    fee applies to prepaid bookings on lower tiers. API and webhook access is
+    generally NOT included at this level.
+- name: Premium
+  price: contact Tock
+  unit: per venue per month
+  note: >-
+    Higher-tier plan (commonly cited around 699 USD per month for the Pro
+    equivalent) with reduced or zero prepaid transaction fees. Eligible for API
+    and webhook access on request.
+- name: Premium Unlimited / Enterprise
+  price: contact Tock
+  unit: custom
+  note: >-
+    Top enterprise tier (public comparisons cite figures up to roughly 769 USD
+    per month, custom for multi-location groups). Eligible for API and webhook
+    access. Enterprise and multi-location groups are quoted directly.
+notes:
+- Tock does not charge a per-cover diner fee, differentiating it from some
+  competitors; monetization is per-venue subscription plus prepaid transaction
+  fees on lower tiers.
+- Plan names and prices vary across Tock's own pricing page and third-party
+  sources; treat the numbers here as indicative, not authoritative.
+- API and webhook provisioning is manual and partner-gated, not billed as a
+  metered API product.

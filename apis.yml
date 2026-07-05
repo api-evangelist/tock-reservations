@@ -1,0 +1,143 @@
+aid: tock-reservations
+url: https://raw.githubusercontent.com/api-evangelist/tock-reservations/refs/heads/main/apis.yml
+name: Tock
+kind: company
+description: >-
+  Tock is a restaurant and hospitality reservations, events, and ordering
+  platform used by restaurants, wineries, bars, and hotels to manage bookings,
+  prepaid experiences, waitlists, and guest data. Tock is owned by American
+  Express (acquired from Squarespace in 2024). Tock exposes a partner and
+  enterprise-gated data API and webhook program rather than an open self-serve
+  developer API - access is limited to Premium and Premium Unlimited plans and
+  is provisioned by request to Tock. The documented surface consists of a
+  twice-daily Data Exports API for historical reservation and guest data, a
+  Guest Profile Ingest API for adding and updating basic guest information and
+  tags, and real-time reservation and guest-profile webhooks. Reservation
+  records cannot be created or manipulated through the API. Data-model reference
+  documentation is published publicly at api.exploretock.com, but concrete
+  endpoint paths, methods, and OpenAPI definitions are only shared with
+  approved partners; the API entries below are modeled from the public data
+  model and API FAQ.
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+tags:
+- Reservations
+- Restaurants
+- Hospitality
+- Events
+- Ordering
+- Guest Data
+- Webhooks
+- Partner API
+- American Express
+created: '2026-07-05'
+modified: '2026-07-05'
+specificationVersion: '0.19'
+apis:
+- aid: tock-reservations:tock-data-exports-api
+  name: Tock Data Exports API
+  tags:
+  - Reservations
+  - Guest Data
+  - Data Export
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://api.exploretock.com/docs/latest/reservation.html
+  baseURL: https://api.exploretock.com
+  endpointsModeled: true
+  properties:
+  - url: https://api.exploretock.com/docs/latest/reservation.html
+    type: Documentation
+  - url: https://tock.zendesk.com/hc/en-us/articles/25447494175508-API-FAQ
+    type: Documentation
+  description: >-
+    Twice-daily export of all historical reservation and guest data for the
+    locations in a Tock business group. Payloads follow the published
+    Reservation data model (party, purchased experiences, options, fees,
+    payments, refunds, payouts, feedback, notes, tables). This is a
+    partner-provisioned data feed - no public self-serve endpoint path, method,
+    or OpenAPI is documented, so the API is modeled from Tock's public data
+    model reference and API FAQ.
+- aid: tock-reservations:tock-guest-profile-ingest-api
+  name: Tock Guest Profile Ingest API
+  tags:
+  - Guests
+  - Profiles
+  - Tags
+  - Ingest
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://api.exploretock.com/docs/latest/guest_profile.html
+  baseURL: https://api.exploretock.com
+  endpointsModeled: true
+  properties:
+  - url: https://api.exploretock.com/docs/latest/guest_profile.html
+    type: Documentation
+  - url: https://tock.zendesk.com/hc/en-us/articles/25447494175508-API-FAQ
+    type: Documentation
+  description: >-
+    Add and update basic guest information and guest-profile tags in Tock,
+    following the published Guest data model (patron identity, contact details,
+    dietary restrictions, hospitality preferences, business and business-group
+    notes and tags). Tock only permits creation and updating of basic guest
+    information via this ingest surface. Endpoint paths and authentication are
+    shared with approved partners only, so this entry is modeled from the public
+    guest data-model reference and API FAQ.
+- aid: tock-reservations:tock-reservation-webhook
+  name: Tock Real-time Reservation Webhook
+  tags:
+  - Reservations
+  - Webhooks
+  - Real-time
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://api.exploretock.com/docs/latest/reservation.html
+  baseURL: https://api.exploretock.com
+  endpointsModeled: true
+  properties:
+  - url: https://api.exploretock.com/docs/latest/reservation.html
+    type: Documentation
+  - url: https://tock.zendesk.com/hc/en-us/articles/25447494175508-API-FAQ
+    type: Documentation
+  description: >-
+    Real-time webhook that delivers reservation updates for all locations
+    within a Tock business group to a partner-supplied endpoint URL. The partner
+    provides the receiving endpoint and any required authorization headers; Tock
+    POSTs reservation events shaped by the published Reservation data model.
+    This is a server-to-endpoint HTTP callback, not a public API the consumer
+    calls - modeled from Tock's API FAQ.
+- aid: tock-reservations:tock-guest-profile-webhook
+  name: Tock Real-time Guest Profile Webhook
+  tags:
+  - Guests
+  - Webhooks
+  - Real-time
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://api.exploretock.com/docs/latest/guest_profile.html
+  baseURL: https://api.exploretock.com
+  endpointsModeled: true
+  properties:
+  - url: https://api.exploretock.com/docs/latest/guest_profile.html
+    type: Documentation
+  - url: https://tock.zendesk.com/hc/en-us/articles/25447494175508-API-FAQ
+    type: Documentation
+  description: >-
+    Real-time webhook that delivers guest-profile updates for all locations
+    within a Tock business group to a partner-supplied endpoint URL. Tock POSTs
+    guest-profile events shaped by the published Guest data model. As with the
+    reservation webhook, the partner supplies the receiving endpoint and
+    authorization headers; modeled from Tock's API FAQ.
+common:
+- type: LinkedIn
+  url: https://www.linkedin.com/company/tock-hq
+- type: Website
+  url: https://www.exploretock.com
+- type: Documentation
+  url: https://api.exploretock.com/docs/latest/reservation.html
+- type: Documentation
+  url: https://tock.zendesk.com/hc/en-us/articles/25447494175508-API-FAQ
+- type: Integrations
+  url: https://www.exploretock.com/join/integrations/
+- type: Partnerships
+  url: https://www.exploretock.com/join/partnerships/
+- type: Plans
+  url: plans/tock-reservations-plans-pricing.yml
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
