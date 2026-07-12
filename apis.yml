@@ -124,6 +124,8 @@ apis:
     reservation webhook, the partner supplies the receiving endpoint and
     authorization headers; modeled from Tock's API FAQ.
 common:
+- type: DomainSecurity
+  url: security/tock-reservations-domain-security.yml
 - type: LinkedIn
   url: https://www.linkedin.com/company/tock-hq
 - type: Website
