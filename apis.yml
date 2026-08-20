@@ -33,6 +33,16 @@ accessModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/tock-reservations.png
 tags:
 - Reservations
+- Restaurant
+- Hospitality
+- Event
+- Ordering
+- Guest Data
+- Webhook
+- Partner API
+- American Express
+tags_raw:
+- Reservations
 - Restaurants
 - Hospitality
 - Events
@@ -96,6 +106,10 @@ apis:
   name: Tock Real-time Reservation Webhook
   tags:
   - Reservations
+  - Webhook
+  - Real-Time
+  tags_raw:
+  - Reservations
   - Webhooks
   - Real-time
   image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
@@ -117,6 +131,10 @@ apis:
 - aid: tock-reservations:tock-guest-profile-webhook
   name: Tock Real-time Guest Profile Webhook
   tags:
+  - Guests
+  - Webhook
+  - Real-Time
+  tags_raw:
   - Guests
   - Webhooks
   - Real-time
