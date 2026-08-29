@@ -18,6 +18,17 @@ description: >-
   endpoint paths, methods, and OpenAPI definitions are only shared with
   approved partners; the API entries below are modeled from the public data
   model and API FAQ.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: paid
   onboarding: approval
